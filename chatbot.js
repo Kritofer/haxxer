@@ -47,7 +47,7 @@ rl.question('address: ', (answer) => {
             client.Disconnect();
         } else if (command_message === ".users") {
             let list = client.SnapshotUnpacker.AllObjClientInfo.map(a => a.name);
-            client.game.Say("Users: " + list.join(", "));
+            client.game.Say(`/w ${authorName} Users: ` + list.join(", "));
         } else if (command_message === ".ping") {
             client.game.Ping().then((ping) => client.game.Say("Ping: " + ping));
         } else if (command_message.startsWith(".team")) {
