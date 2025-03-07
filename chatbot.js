@@ -40,7 +40,7 @@ rl.question('address: ', (answer) => {
         if (command_message === ".help") {
             client.game.Say(`${authorName}: Commands: .help, .myskin, .say, .leave, .users, .ping, .team, .kill, .invite`);
         } else if (command_message === ".myskin") {
-            client.game.Say(`${authorName}: Your skin: ${msg.author?.ClientInfo?.skin}`);
+            client.game.Say(`/W ${authorName} Your skin: ${msg.author?.ClientInfo?.skin}`);
         } else if (command_message.startsWith(".say ")) {
             client.game.Say(messageContent.slice(".say ".length));
         } else if (command_message === ".leave") {
@@ -57,8 +57,8 @@ rl.question('address: ', (answer) => {
             } else {
                 client.game.Say(`/team ${team}`);
             }
-        } else if (command_message.startsWith(".invite")) {
-            const user = messageContent.split(" ")[1]; // Get the user from the command
+        } else if (command_message.startsWith(".invite ")) {
+            const user = messageContent.slice(".invite ".length)
             if (!user) {
                 client.game.Say("Please provide a user name or user ID. Usage: .teaminvite [username or user ID]");
                 return;
